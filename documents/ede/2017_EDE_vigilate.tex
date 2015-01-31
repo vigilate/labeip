@@ -1,0 +1,113 @@
+% Type de document
+\documentclass[a4paper,11pt]{report}
+ 
+% Chargement des extensions
+
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{graphicx}
+%\usepackage[x11 names]{xcolor}
+\usepackage{fancyhdr}
+\usepackage[absolute]{textpos}
+ \usepackage[svgnames]{xcolor}
+\usepackage{colortbl}
+
+\title{EDE Vigilitate}
+\author{Soules Kévin, Mercier Daniel, Budowski Prune}
+\date{\today}
+
+
+
+%entete & pied de pa
+\fancyhead{}                     
+\makeatletter
+\let\ps@plain=\ps@fancy
+\makeatother
+\pagestyle{fancy}
+\setlength{\unitlength}{1mm}
+\addtolength{\headheight}{1.5\baselineskip}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\thesection}{\arabic{section}} 
+\renewcommand{\thechapter}{\Roman{chapter}}
+\rhead{
+\includegraphics[width=3cm]{../../logos/logo_eip.png}
+\hfill
+\colorbox{MidnightBlue}{\textcolor{white}{\LARGE \textbf{[2017][Vigilate][EDE]}}}
+\fancyfoot[L]{\textcolor{gray}{\{EPITECH.\}}}
+}
+% Début du document
+\begin{document}
+
+
+    % Corps du document
+
+\vspace*{\stretch{2}}
+\begin{center}\textcolor{MidnightBlue}{\LARGE \textbf{EIP Vigilitate}}\linebreak
+\vspace*{\stretch{1}}
+\textcolor{gray}{\textit{\Large Etude de l'existant (EDE)}}\linebreak
+\vspace*{\stretch{1}}
+{\today}\end{center}
+\vspace*{\stretch{1}}
+\newpage
+\textcolor{MidnightBlue}{\textit{\large \textbf{Résumé du document}}}
+\newpage
+\begin{flushleft}
+\textcolor{MidnightBlue}{\textit{\large \textbf{Description du document}}}\linebreak
+
+
+
+\begin{tabular}{|>{\columncolor[RGB]{220,220,220}\color{Navy}\bfseries}l|l|}
+\hline
+Titre & [2017][Vigilate][EDE] \\
+\hline
+Date & 31/01/2015 \\
+\hline
+Auteur & Kévin SOULES \\
+\hline
+Responsable & Kévin SOULES\\
+\hline
+Email & vigilate2017\\
+\hline
+Sujet & Etude de l'existant\\
+\hline
+Mots clés & Ebe, sécurité, vulnérabilités, concurrence\\
+\hline
+Version du modèle & 1.0\\
+\hline
+\end{tabular}
+\bigbreak
+
+\textcolor{MidnightBlue}{\textit{\large \textbf{Tableau des révisions}}}
+\bigbreak
+\begin{tabular}{|l|l|l|l|}
+  \hline
+ 
+   \rowcolor{Gainsboro}Date  & Auteur & Section(s) & Commentaires \\
+  \hline
+  &  &  & \\
+  &  & &  \\
+  \hline
+\end{tabular}
+\end{flushleft}
+\tableofcontents
+ \thispagestyle{fancy}
+\chapter{Mon premier chapitre}
+ \thispagestyle{fancy}
+    Voici un peu de texte dans le premier chapitre de mon document. Pour le moment, mon document n'a pas énormément d'intérêt, si ce n'est de montrer comment il est possible de structurer simplement un document sous LaTeX !
+    \section{Une section}
+    Ceci est une première section, au sein du premier chapitre.
+    \section{Une seconde section}
+    Ceci est une seconde section, au sein du premier chapitre.
+
+    \chapter{Mon deuxième chapitre}
+    Voici un peu de texte dans le deuxième chapitre de mon document.
+    \section{Une section}
+    Ceci est une première section, au sein du deuxième chapitre.
+    \section{Une seconde section}
+    Ceci est une seconde section, au sein du deuxième chapitre.
+
+
+
+% Fin du document
+\end{document}
