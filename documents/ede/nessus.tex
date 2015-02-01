@@ -1,0 +1,44 @@
+\section{Nessus}
+\thispagestyle{plain}
+\subsection{Présentation}
+Ce scanner de vulnérabilité couvre plusieurs points clé [2]: Scan du réseau, détection de problème de configuration, gestion des patchs de sécurité, scan web, scan SCADA, detection de certains malware. C’est donc une solution complète qui satisfait une bonne part de services informatique. Un sondage le classe même dans le scanner de vulnérabilité le plus utilisé.
+
+\subsection{Historique}
+C’est Renaud Deraison qui en 1998 développe son scanner de vulnérabilité.\\
+Libre à son commencement (licence GPL), en 2002 il co-fonde Tenable Network Security [3] et c’est en 2005 qu’il change la licence de Nessus en programme propriétaire. [4] C’est à ce moment-là que son petit frère OpenVAS, fork libre de Nessus (licence GPL) voit le jour [5]. Depuis, ces deux programmes évoluent chacun de leur coté.
+
+\subsection{Description}
+Nessus est fourni avec un grande base de plugin permettant de détecter des vulnérabilités. Ces plugins sont écris dans un langage dédié (nasl).\\
+Un scan nessus s’effectue en plusieurs étapes [6]:\\
+\begin{itemize}
+\item [$\bullet$]Découverte du réseau\\
+\item [$\bullet$]Scan de port sur les machines découvertes\\
+\item [$\bullet$]Fingerprint pour récupérer les informations de version des services distant\\
+\item [$\bullet$]Possibilité d’avoir un scan authentifié et de récupérer des informations en se connectant directement sur la machine. (ssh/WMI)\\
+\item [$\bullet$]Plusieurs type d’attaques effectué (de certaines peu agressives, à certaines pouvant enrêner une indisponibilité momentané de la machine ou du service ciblé)\\
+\end{itemize}
+
+Une fois le scan effectué, un rapport détaillé (html/wml/pdf) est généré, avec la description de chaque problèmes rencontrés, l’adresse de la machine vulnérable, le niveau de sévérité de la vulnérabilité et d’une solution générique pour résoudre le problème.
+
+
+\subsection{Points positifs}
+C’est un outil très complet. Il permet d'effectuer aussi bien des audits ciblés qu’un suivis régulier de l’état de vulnérabilité du système d’information.
+
+\subsection{Points Négatifs}
+Pour qu’une nouvelle vulnérabilité soit signalé, plusieurs étapes sont nécessaires:\\
+\begin{itemize}
+\item [$\bullet$]Il faut que l’éditeur publie un plugin nasl permettant de découvrir la nouvelle vulnérabilité.\\
+\item [$\bullet$]Il faut que le scanner synchronise sa base de donné de plugin. (Souvent de façon quotidienne)\\
+\item [$\bullet$]Il faut qu’un scan soit relancé (des fois quotidiennement) et qu’il se termine. En effet, malgré l’affichage des vulnérabilités trouvé en direct sur l’interface, le scanner va devoir tester plusieurs milliers de plugin avant de tester le tout dernier qui nous intéresse. Évidement on pourrait relancer un scan avec seulement ce seul plugin, mais là nous dépassons la dimension automatique du test.
+\end{itemize}
+
+\subsection{Références}
+\small
+\noindent
+ [1] \url{http://www.tenable.com/products/nessus} \newline
+ [2] \url{http://www.tenable.com/products/nessus/nessus-vulnerability-scanner/features} \newline
+ [3] \url{http://techcrunch.com/2012/09/05/tenable-accel-series-a/} \newline
+ [3] \url{http://news.cnet.com/Nessus-security-tool-closes-its-source/2100-7344_3-5890093.html} \newline
+ [5] \url{http://lists.wald.intevation.org/pipermail/openvas-discuss/2005-December/000100.html} \newline
+ [6] \url{http://static.tenable.com/documentation/nessus_6.2_user_guide.pdf} \newline
+\normalsize
