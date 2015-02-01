@@ -1,4 +1,4 @@
-\section{Nessus}
+ \section{Nessus}
 \thispagestyle{plain}
 \subsection{Présentation}
 Ce scanner de vulnérabilité couvre plusieurs points clé [2]: Scan du réseau, détection de problèmes de configuration, gestion des patchs de sécurité, scan web, scan SCADA, détection de certains malwares. C’est donc une solution complète qui satisfait une bonne part des services informatiques. Un sondage le classe même dans le scanner de vulnérabilité le plus utilisé.
@@ -11,11 +11,11 @@ Libre à son commencement (licence GPL), en 2002 il co-fonde Tenable Network Sec
 Nessus est fourni avec une grande base de plugins permettant de détecter des vulnérabilités. Ces plugins sont écrits dans un langage dédié (Nasl).\\
 Un scan Nessus s’effectue en plusieurs étapes [6]:\\
 \begin{itemize}
-\item [$\bullet$]Découverte du réseau\\
-\item [$\bullet$]Scan de port sur les machines découvertes\\
-\item [$\bullet$]Fingerprint pour récupérer les informations de version des services distants\\
+\item [$\bullet$]Découverte du réseau.\\
+\item [$\bullet$]Scan de port sur les machines découvertes.\\
+\item [$\bullet$]Fingerprint pour récupérer les informations de version des services distants.\\
 \item [$\bullet$]Possibilité d’avoir un scan authentifié et de récupérer des informations en se connectant directement sur la machine. (ssh/WMI)\\
-\item [$\bullet$]Plusieurs types d’attaques effectuées (de certaines peu agressives, à certaines pouvant enraîner une indisponibilité momentané de la machine ou du service ciblé)\\
+\item [$\bullet$]Plusieurs types d’attaques effectuées (de certaines peu agressives, à certaines pouvant enraîner une indisponibilité momentané de la machine ou du service ciblé).\\
 \end{itemize}
 
 Une fois le scan effectué, un rapport détaillé (html/wml/pdf) est généré, avec la description de chaque problème rencontré, l’adresse de la machine vulnérable, le niveau de sévérité de la vulnérabilité et d’une solution générique pour résoudre le problème.
@@ -24,7 +24,7 @@ Une fois le scan effectué, un rapport détaillé (html/wml/pdf) est généré, 
 \subsection{Points positifs}
 C’est un outil très complet. Il permet d'effectuer aussi bien des audits ciblés qu’un suivi régulier de l’état de vulnérabilité du système d’information.
 
-\subsection{Points Négatifs}
+\subsection{Points négatifs}
 Pour qu’une nouvelle vulnérabilité soit signalée, plusieurs étapes sont nécessaires:\\
 \begin{itemize}
 \item [$\bullet$]Il faut que l’éditeur publie un plugin Nasl permettant de découvrir la nouvelle vulnérabilité.\\
