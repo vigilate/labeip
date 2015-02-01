@@ -70,31 +70,34 @@
 {\today}\end{center}
 \vspace*{\stretch{1}}
 \newpage
-
+\vspace*{\stretch{1}}
 \begin{flushleft}\textcolor{myBlue}{\textit{\large \textbf{Résumé du document}}} \linebreak \end{flushleft}
-
 \input{resume.tex}
+\vspace*{\stretch{1}}
 
 \newpage
 \begin{flushleft}
-\textcolor{myBlue}{\textit{\large \textbf{Description du document}}} \linebreak
-
-\input{cartouche.tex}
+ \vspace*{\stretch{1}}
+\textcolor{myBlue}{\textit{\large \textbf{Description du document}}} 
 \bigbreak
-
+\input{cartouche.tex}
+\vspace*{\stretch{2}}
+\bigbreak
+\bigbreak
 \textcolor{myBlue}{\textit{\large \textbf{Tableau des révisions}}}
 \bigbreak
 \input{revisions.tex}
+\vspace*{\stretch{1}}
 
 \end{flushleft}
 \tableofcontents
 \thispagestyle{fancy}
 
-\chapter{Rappel de l'EIP}
+\textcolor{myBlue}{\chapter{Rappel de l'EIP}}
 
 \input{rappel_eip.tex}
 
-\chapter{Les projets existants}
+\textcolor{myBlue}{\chapter{Les projets existants}}
 
 \input{nessus.tex} \newpage
 \input{shalvik.tex} \newpage
@@ -102,9 +105,9 @@
 \input{cisco.tex} \newpage
 \input{xmco.tex}
 
-\chapter{Positionnement de votre projet}
+\textcolor{myBlue}{\chapter{Positionnement de votre projet}}
 \input{positionnement.tex}
-\chapter{Conclusion}
+\textcolor{myBlue}{[\chapter{Conclusion}}
 \input{conclusion.tex}
 
 % Fin du document
