@@ -16,12 +16,17 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{geometry}
 \usepackage{tikz}
+\usepackage{titlesec}
 \usetikzlibrary{matrix}
 
 \title{EDE Vigilitate}
 \author{Soules Kévin, Mercier Daniel, Budowski Prune, Harscoat Morgane, Poncet Manuel, Keller Flavien}
 \date{\today}
 
+\titleformat{\section}[block]{\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}[block]{\hspace{2em}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[block]{\hspace{3em}}{\thesubsubsection}{1em}{}
+  
 \geometry{
   a4paper,
   left=20mm,
