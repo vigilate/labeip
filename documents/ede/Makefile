@@ -5,7 +5,7 @@
 ## Login   <soules_k@epitech.net>
 ## 
 ## Started on  Sat Jan 31 20:01:50 2015 eax
-## Last update Sun Feb  1 04:38:57 2015 eax
+## Last update Sun Feb  1 16:04:44 2015 eax
 ##
 
 LATEX	= pdflatex
@@ -17,6 +17,8 @@ all: $(TARGET)
 
 #this is uglyy, need to fix
 $(TARGET): $(MAINSRC)
+	$(LATEX) $<
+	$(LATEX) $<
 	$(LATEX) $<
 	$(LATEX) $<
 
