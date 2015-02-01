@@ -1,0 +1,111 @@
+% Type de document
+\documentclass[a4paper,11pt]{report}
+ 
+% Chargement des extensions
+
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{graphicx}
+%\usepackage[x11 names]{xcolor}
+\usepackage{fancyhdr}
+\usepackage[absolute]{textpos}
+\usepackage[svgnames]{xcolor}
+\usepackage{colortbl}
+\usepackage{lastpage}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+
+
+\title{EDE Vigilitate}
+\author{Soules Kévin, Mercier Daniel, Budowski Prune, Harscoat Morgane, Poncet Manuel, Keller Flavien}
+\date{\today}
+
+\geometry{
+  a4paper,
+  left=20mm,
+  right=20mm,
+}
+
+\fancyhead{}
+\makeatletter
+\let\ps@plain=\ps@fancy
+\makeatother
+
+\definecolor{myBlue}{RGB}{23,54,93}
+
+\pagestyle{fancy}
+\setlength{\unitlength}{1mm}
+\addtolength{\headheight}{1.5\baselineskip}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\rhead{
+\includegraphics[width=3cm]{../../logos/logo_eip.png}
+\hfill
+\colorbox{myBlue}{\textcolor{white}{\Large \textbf{[2017][Vigilate][EDE]}}}
+\fancyfoot[L]{
+  \textcolor{gray}{
+    \{EPITECH.\}
+  }
+}
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage/\pageref{LastPage}}
+}
+
+% Début du document
+\begin{document}
+
+
+% Corps du document
+
+\vspace*{\stretch{2}}
+\begin{center}\textcolor{myBlue}{\Huge \textbf{EIP Vigilitate}}\linebreak
+\thispagestyle{empty}
+\vspace*{\stretch{1}}
+\textcolor{gray}{\textit{\Large 50 mots - Préparation à la promotion de votre projet}}\linebreak
+\vspace*{\stretch{1}}
+{\today}\end{center}
+\vspace*{\stretch{1}}
+\newpage
+
+%\textcolor{myBlue}{\textit{\large \textbf{Résumé du document}}}
+
+%\input{resume.tex}
+
+\newpage
+\begin{flushleft}
+\textcolor{myBlue}{\textit{\large \textbf{Description du document}}}\linebreak
+
+\input{cartouche.tex}
+\bigbreak
+
+\textcolor{myBlue}{\textit{\large \textbf{Tableau des révisions}}}
+\bigbreak
+\input{revisions.tex}
+
+\end{flushleft}
+%\tableofcontents
+\thispagestyle{fancy}
+\newpage
+\input{50mots.tex}
+%\chapter{Rappel de l'EIP}
+
+%\input{rappel_eip.tex}
+
+%\chapter{Les projets existants}
+
+%\input{nessus.tex}
+%\input{shalvik.tex}
+%\input{cert.tex}
+%\input{cisco.tex}
+%\input{xmco.tex}
+
+%\chapter{Positionnement de votre projet}
+%\input{positionnement.tex}
+%\chapter{Conclusion}
+%\input{conclusion.tex}
+
+% Fin du document
+\end{document}
