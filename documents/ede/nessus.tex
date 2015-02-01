@@ -5,7 +5,7 @@ Ce scanner de vulnérabilité couvre plusieurs points clé [2]: Scan du réseau,
 
 \subsection{Historique}
 C’est Renaud Deraison qui en 1998 développe son scanner de vulnérabilité.\\
-Libre à son commencement (licence GPL), en 2002 il co-fonde Tenable Network Security [3] et c’est en 2005 qu’il change la licence de Nessus en programme propriétaire. [4] C’est à ce moment-là que son ``petit frère'' OpenVAS, fork libre de Nessus (licence GPL) voit le jour [5]. Depuis, ces deux programmes évoluent chacun de leur coté.
+Libre à son commencement (licence GPL), en 2002 il co-fonde Tenable Network Security [3] et c’est en 2005 qu’il change la licence de Nessus en programme propriétaire. [4] C’est à ce moment-là que son \og{}petit frère\fg{} OpenVAS, fork libre de Nessus (licence GPL) voit le jour [5]. Depuis, ces deux programmes évoluent chacun de leur côté.
 
 \subsection{Description}
 Nessus est fourni avec une grande base de plugins permettant de détecter des vulnérabilités. Ces plugins sont écrits dans un langage dédié (Nasl).\\
@@ -15,7 +15,7 @@ Un scan Nessus s’effectue en plusieurs étapes [6]:\\
 \item [$\bullet$]Scan de port sur les machines découvertes.\\
 \item [$\bullet$]Fingerprint pour récupérer les informations de version des services distants.\\
 \item [$\bullet$]Possibilité d’avoir un scan authentifié et de récupérer des informations en se connectant directement sur la machine. (ssh/WMI)\\
-\item [$\bullet$]Plusieurs types d’attaques effectuées (de certaines peu agressives, à certaines pouvant enraîner une indisponibilité momentané de la machine ou du service ciblé).\\
+\item [$\bullet$]Plusieurs types d’attaques effectuées (de certaines peu agressives, à certaines pouvant entraîner une indisponibilité momentanée de la machine ou du service ciblé).\\
 \end{itemize}
 
 Une fois le scan effectué, un rapport détaillé (html/wml/pdf) est généré, avec la description de chaque problème rencontré, l’adresse de la machine vulnérable, le niveau de sévérité de la vulnérabilité et d’une solution générique pour résoudre le problème.
@@ -29,7 +29,7 @@ Pour qu’une nouvelle vulnérabilité soit signalée, plusieurs étapes sont n�
 \begin{itemize}
 \item [$\bullet$]Il faut que l’éditeur publie un plugin Nasl permettant de découvrir la nouvelle vulnérabilité.\\
 \item [$\bullet$]Il faut que le scanner synchronise sa base de données de plugin. (souvent de façon quotidienne)\\
-\item [$\bullet$]Il faut qu’un scan soit relancé (des fois quotidiennement) et qu’il se termine. En effet, malgré l’affichage des vulnérabilités trouvées en direct sur l’interface, le scanner va devoir tester plusieurs milliers de plugins avant de tester le tout dernier qui nous intéresse. Évidement on pourrait relancer un scan avec seulement ce seul plugin, mais là nous dépassons la dimension automatique du test.
+\item [$\bullet$]Il faut qu’un scan soit relancé (des fois quotidiennement) et qu’il se termine. En effet, malgré l’affichage des vulnérabilités trouvées en direct sur l’interface, le scanner va devoir tester plusieurs milliers de plugins avant de tester le tout dernier qui nous intéresse. Évidemment on pourrait relancer un scan avec seulement ce seul plugin, mais là nous dépassons la dimension automatique du test.
 \end{itemize}
 
 \subsection{Références}
