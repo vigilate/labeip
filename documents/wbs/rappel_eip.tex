@@ -6,6 +6,13 @@ Le but de Vigilate est d’avertir les utilisateurs des services obsolètes ou p
 Cela sans effectuer de scan de vulnérabilité.
 Nous proposons cependant un outil de scan de programme qui envoie la liste sur notre plateforme web.
 
+\section{Principe de base du système futur}
+Vigilate sera composé de quatres grands blocs fonctionnels: site web, programme de scan, backend et vm.\\
+La partie frontend du site web communiquera via l’api avec la partie backend.\\
+Le programme de scan communiquera également via l’api avec le backend pour mettre à jour la liste de logiciel que veut surveiller l’utilisateur, l'objectif étant de l’informer le plus rapidement possible et d’être simple d’utilisation.\\
+La machine virtuelle sera une sorte de copie locale de ce qu’il y a sur nos serveurs. Elle permettra aux entreprises qui le souhaitent d’avoir un niveau de sécurité encore plus important.\\
+Cet outil est adapté à plusieurs types de clients: Aussi bien un webmaster souhaitant garder un oeil sur le CMS de son site web, qu’une entreprise voulant veiller à la sûreté de ses services informatiques.\\
+
 \section{Glossaire}
 \noindent
 
