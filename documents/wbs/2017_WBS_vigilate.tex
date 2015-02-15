@@ -1,5 +1,4 @@
 \documentclass[a4paper,12pt]{report}
-
 \usepackage[utf8]{inputenc}
 \usepackage[francais]{babel}
 \usepackage{graphicx}
@@ -15,9 +14,7 @@
 \usepackage{titlesec}
 \usepackage{datetime}
 \usepackage{lipsum}
-\usepackage{array}
 \usepackage{supertabular}
-\usepackage{float}
 \usetikzlibrary{matrix}
 
 \newcommand{\doctitle}{WBS}
@@ -84,7 +81,7 @@
 
 \begin{document}
 \date{\slashdate\today}
-\setcounter{page}{-10}
+\setcounter{page}{-3}
 
 % --- (1) Page de garde ---
 
@@ -135,8 +132,6 @@
 \textcolor{myBlue}{\chapter{Rappel de l'EIP}}
 \setcounter{page}{1}
 \input{rappel_eip.tex}
-
-
 \input{context.tex}
 
 \let\clearpage\relax
