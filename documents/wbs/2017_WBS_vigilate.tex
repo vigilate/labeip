@@ -17,6 +17,7 @@
 \usepackage{lipsum}
 \usepackage{array}
 \usepackage{supertabular}
+\usepackage{float}
 \usetikzlibrary{matrix}
 
 \newcommand{\doctitle}{WBS}
@@ -138,18 +139,14 @@
 
 \input{context.tex}
 
-\chapter{WBS}
+\let\clearpage\relax
+\textcolor{myBlue}{\chapter{WBS}}
 \section{Représentation du WBS}
 
 \includegraphics[trim = 2.5cm 0 0 3cm, clip, width=21.5cm]{Organigramme.pdf}
+
 
 \input{dictionnaire.tex}
 
 
 \end{document}
-
-
-
-
-
-
