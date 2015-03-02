@@ -5,17 +5,54 @@
 ## Login   <soules_k@epitech.net>
 ## 
 ## Started on  Wed Feb 25 02:46:08 2015 eax
-## Last update Wed Feb 25 04:30:46 2015 eax
+## Last update Mon Mar  2 18:59:34 2015 eax
 ##
 
 import sys
 import time
 import datetime
 import json
+import requests
 from bs4 import BeautifulSoup
 
-def parse_html(f):
-    parser = BeautifulSoup(open("eip.html"))
+intra_session = requests.Session()
+
+def login_get_token_fields(page):
+    parser = BeautifulSoup(page)
+    form = parser.find("form", attrs={"id": "login_form"})
+    token = form.find("input", attrs={"name": "data[_Token][key]"})
+    fields = form.find("input", attrs={"name": "data[_Token][fields]"})
+
+    return (token.attrs["value"], fields.attrs["value"])
+
+def send_login_form(token, fields):
+    global intra_session
+    login = raw_input("login:")
+    password = raw_input("password:")
+    post_data = {"_method": "POST",
+                 "data[User][login]": login,
+                 "data[User][password]": password,
+                 "data[_Token][fields]": fields,
+                 "data[_Token][key]": token}
+    
+    r = intra_session.post("https://eip.epitech.eu/users/login", data=post_data)
+    return True
+    
+
+def read_login():
+    global intra_session
+    r = intra_session.get("https://eip.epitech.eu/")
+    token, fields = login_get_token_fields(r.text)
+    if not send_login_form(token, fields):
+        exit("Sending login failed.")
+        
+
+def get_wall():
+    r = intra_session.get("https://eip.epitech.eu/projects/view/777")
+    return r.text
+
+def parse_wall(f):
+    parser = BeautifulSoup(f)
     wall = parser.find('div', attrs={"id": "wall"})
 
     res = []
@@ -64,14 +101,15 @@ def check_last_comment(data):
             mark = "without a mark"
             if data[0]["mark"]:
                 mark = "(%s)" % data[0]["mark"]
-            print "The comment for '%s' has been added" % (data[0]["name"], mark)
+            print "The comment for '%s' has been added %s" % (data[0]["name"], mark)
 
     update_saved(data)    
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        exit("Usage: %s eip_wall_file.html" % sys.argv[0])
+    read_login()
+    w = get_wall()
 
-    res = parse_html(open(sys.argv[1]).read())
+        
+    res = parse_wall(w)
     check_last_comment(res)
 
