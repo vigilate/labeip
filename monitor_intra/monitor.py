@@ -5,7 +5,7 @@
 ## Login   <soules_k@epitech.net>
 ## 
 ## Started on  Wed Feb 25 02:46:08 2015 eax
-## Last update Mon Mar  2 18:59:34 2015 eax
+## Last update Mon Mar  2 21:25:23 2015 eax
 ##
 
 import sys
@@ -13,9 +13,33 @@ import time
 import datetime
 import json
 import requests
+import os.path
+import getpass
 from bs4 import BeautifulSoup
 
 intra_session = requests.Session()
+
+def get_creds():
+    user = None
+    pwd = None
+    if os.path.isfile("creds"):
+        with open("creds") as f:
+            user, pwd = f.read().strip().split(" ", 1)
+
+    if not user or not pwd:
+        print("There is no `creds` file. Asking the user.")
+        user = raw_input("User:")
+        pwd = getpass.getpass("Password:")
+        r = None
+        while r != "n" and r != "y":
+            if r != None:
+                print("Please write 'y' or 'n'")
+            r = raw_input("Save it in `creds` file ? [y/n]:")
+        if r == "y":
+            with open("creds", "w") as f:
+                f.write("%s %s" % (user, pwd))
+
+    return user, pwd
 
 def login_get_token_fields(page):
     parser = BeautifulSoup(page)
@@ -27,8 +51,7 @@ def login_get_token_fields(page):
 
 def send_login_form(token, fields):
     global intra_session
-    login = raw_input("login:")
-    password = raw_input("password:")
+    login, password = get_creds()
     post_data = {"_method": "POST",
                  "data[User][login]": login,
                  "data[User][password]": password,
@@ -36,15 +59,16 @@ def send_login_form(token, fields):
                  "data[_Token][key]": token}
     
     r = intra_session.post("https://eip.epitech.eu/users/login", data=post_data)
-    return True
+    return parse_login_response(r.text)
     
 
-def read_login():
+def do_login():
     global intra_session
     r = intra_session.get("https://eip.epitech.eu/")
     token, fields = login_get_token_fields(r.text)
     if not send_login_form(token, fields):
         exit("Sending login failed.")
+    
         
 
 def get_wall():
@@ -62,7 +86,10 @@ def parse_wall(f):
         inner = item.find("div", attrs={"class": "accordion-body"})
         date = inner.div.blockquote.small
         mark = inner.div.blockquote.find("small", attrs={"class": "mark-followup"})
-        strdate = date.text.strip().split("par", 1)[0].strip()
+        if "par" in date.text:
+            strdate = date.text.strip().split("par", 1)[0].strip()
+        else:
+            strdate = date.text.strip().split("by", 1)[0].strip()
 
 
         ts = time.mktime(datetime.datetime.strptime(strdate, "%d/%m/%Y %H:%M").timetuple())
@@ -80,12 +107,16 @@ def update_saved(data):
 
 def check_last_comment(data):
     savedlastinfo = None
+    changed = False
     open("savedlastinfo", "a+").close()
     with open("savedlastinfo") as f:
         try:
             savedlastinfo = json.load(f)
         except:
-            print "savedlastinfo does not contain a valid json"
+            if not f.read():
+                print "Empty saved info"
+            else:
+                print "savedlastinfo does not contain a valid json"
 
     if not savedlastinfo:
         update_saved(data)
@@ -93,23 +124,38 @@ def check_last_comment(data):
     
     sorted(data, key=lambda x: x["time"])
     sorted(savedlastinfo, key=lambda x: x["time"])
-    
+
+    msg = "No change since last time"
     if data[0]["time"] > savedlastinfo[0]["time"]:
+        changed = True
         if len(data) == len(savedlastinfo):
-            print "The comment for '%s' has been modified" % data[0]["name"]
+            msg =  "The comment for '%s' has been modified" % data[0]["name"]
         elif len(data) > len(savedlastinfo):
             mark = "without a mark"
             if data[0]["mark"]:
                 mark = "(%s)" % data[0]["mark"]
-            print "The comment for '%s' has been added %s" % (data[0]["name"], mark)
+            msg = "The comment for '%s' has been added %s" % (data[0]["name"], mark)
 
-    update_saved(data)    
-
+    print msg
+    update_saved(data)
+    return changed, msg
+    
+def parse_login_response(data):
+    parser = BeautifulSoup(data)
+    login_msg_failed = parser.find("div", attrs={"id": "authMessage"})
+    if login_msg_failed:
+        exit("Login failed: %s" % login_msg_failed.text)
+    return True
+    
 if __name__ == "__main__":
-    read_login()
+    print("Login...")
+    do_login()
+    
+    print("Getting wall...")
     w = get_wall()
 
-        
     res = parse_wall(w)
-    check_last_comment(res)
+    if not res:
+        exit("Couldn't properly parse wall page.")
+    print check_last_comment(res)
 
