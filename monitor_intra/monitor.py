@@ -1,11 +1,11 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 ## monitor.py for  in /home/eax/dev/vigilate/labeip/monitor_intra
 ## 
 ## Made by eax
 ## Login   <soules_k@epitech.net>
 ## 
 ## Started on  Wed Feb 25 02:46:08 2015 eax
-## Last update Mon Mar  2 21:25:23 2015 eax
+## Last update Tue Mar  3 02:33:56 2015 eax
 ##
 
 import sys
@@ -15,7 +15,10 @@ import json
 import requests
 import os.path
 import getpass
+import signal
+import asyncio
 from bs4 import BeautifulSoup
+from hangout import MyHangBot
 
 intra_session = requests.Session()
 
@@ -114,9 +117,9 @@ def check_last_comment(data):
             savedlastinfo = json.load(f)
         except:
             if not f.read():
-                print "Empty saved info"
+                print("Empty saved info")
             else:
-                print "savedlastinfo does not contain a valid json"
+                print("savedlastinfo does not contain a valid json")
 
     if not savedlastinfo:
         update_saved(data)
@@ -136,7 +139,6 @@ def check_last_comment(data):
                 mark = "(%s)" % data[0]["mark"]
             msg = "The comment for '%s' has been added %s" % (data[0]["name"], mark)
 
-    print msg
     update_saved(data)
     return changed, msg
     
@@ -146,8 +148,24 @@ def parse_login_response(data):
     if login_msg_failed:
         exit("Login failed: %s" % login_msg_failed.text)
     return True
+
+
+def send_hangout_msg(msg):
+    bot = MyHangBot()
+    if not bot.login():
+        exit()
+
+    bot.set_connect_msg(open("hangout_room").read().strip(), msg)
     
+    loop = asyncio.get_event_loop()
+    loop.add_signal_handler(signal.SIGINT, lambda: bot.stop())
+    loop.add_signal_handler(signal.SIGTERM, lambda: bot.stop())
+
+    loop.run_until_complete(bot.client.connect())
+
+
 if __name__ == "__main__":
+
     print("Login...")
     do_login()
     
@@ -157,5 +175,12 @@ if __name__ == "__main__":
     res = parse_wall(w)
     if not res:
         exit("Couldn't properly parse wall page.")
-    print check_last_comment(res)
+    ret = check_last_comment(res)
+    if not ret:
+        exit("First run")
+    status,msg = ret
+    if status:
+        print("sending msg: %s" % msg)
+        send_hangout_msg(msg)
+        
 

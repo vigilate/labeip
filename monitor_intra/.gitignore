@@ -1,2 +1,7 @@
 creds
 savedlastinfo
+.cookies.json
+hangout_creds
+hangout_room
+hangout_name
+__pycache__/
