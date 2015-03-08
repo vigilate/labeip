@@ -1,0 +1,18 @@
+\section{Environnement de réalisation}
+Notre environnement sera composé des outils suivants:\\
+- github, une plateforme de gestion et d'hébergement de projet. Système de gestion de version, Système d’issue.\\
+- Travis-ci, un outil permettant de réaliser des tests d’intégration continue sur un projet informatique. Avant de valider un commit, cette plateforme compile le projet et lance les tests unitaires.\\
+- Python, le langage de programmation qui sera utilisé afin de réaliser les différentes tâches.\\
+- LaTeX, langage permettant de mettre en forme un document texte. Cet outil sera utilisé pour la documentation.\\
+- pep8, la norme de programmation que l’on respectera pour python.\\
+
+\section{Composants existants}
+Afin de récupérer les informations sur les nouvelles vulnérabilités, nous nous baserons sur un outil qui liste les dernières CVE.\\
+Elles sont listées sous la forme de flux RSS, nous suivrons ce flux pour rester informer des derniers ajouts.\\
+Cette source d’information est donc la source d’information principale que nous utiliserons.\\
+
+\section{Gestion de la sécurité}
+Nous somme un outil de sécurité, donc on se doit  d’avoir une infrastructure exempte de vulnérabilité. Il ne faut en aucun cas qu’une personne puisse accéder aux informations d’un autre compte.\\
+
+\section{Points sensibles}
+Le flux rss que l’on utilisera pour récupérer nos données est un point essentiel de notre solution. Si cette source disparaît, nous devrons trouver un autre moyen pour lister les derrières vulnérabilités. Une solution alternative étant de suivre les mailing list de sécurité et automatiquement détecter les ajout de CVE.\\
