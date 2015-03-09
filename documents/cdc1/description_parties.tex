@@ -1,8 +1,10 @@
 \section{Structure générale}
 Vigilate est une solution composé de 3 programmes différents :\\
-Un site web\\
-Un scanner\\
-Un backend\\
+\begin{itemize}
+\item Un site web\\
+\item Un scanner\\
+\item Un backend\\
+\end{itemize}
 Vigilate pourra optionnellement être distribué sur une vm.\\
 \section{Le site web}
 Le site web servira à la personnalisation des alertes. On pourra choisir quels programmes suivre. On pourra aussi choisir un niveau de criticité minimum par programme pour être prévenue. Le site permettra aussi de choisir le ou les moyens par lesquels on veut être prévenue lors de la découverte d’une vulnérabilité (mail, sms ou notifications sur le site). Le site web enverra ces données au backend via l’api pour qu’il mette à jour la base de donnée.\\
@@ -19,4 +21,9 @@ Le backend hébergera aussi l’api de vigilate, cette api permettra au backend 
 Pour finir Vigilate aura optionnellement une vm. Ce sera machine virtuelle prête à fonctionner qui contiendra le site web et le backend de vigilate. Un système de mise à jours permettra à la vm d’avoir les composants de vigilate toujours à jours sans avoir à la réinstaller.\\
 
 \section{Cas d’utilisation}
-** Inserer les images ici **
+\begin{figure}[]
+  \includegraphics[width=18cm]{uml1.png}
+\end{figure}
+\begin{figure}[]
+  \includegraphics[width=18cm]{uml2.png}
+\end{figure}
