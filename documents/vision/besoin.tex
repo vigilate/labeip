@@ -1,0 +1,15 @@
+\section{Besoins principaux du projet}
+\begin{itemize}
+\item Référencer les programmes utilisés par le client simplement : Le client doit pouvoir fournir facilement la liste des programmes à surveiller au serveur de Vigilate.
+\item Être alerté dès qu'une faille est découverte : Le client doit recevoir une alerte au moment où une faille est détectée afin d'être conscient des risques qu'il encourt.
+\item Pouvoir utiliser Vigilate sans envoyer de données sur un serveur : Le client doit pouvoir utiliser Vigilate sans communiquer les programmes qu'il utilise à Vigilate s'il souhaite garder ces informations confidentielles.
+\item Pouvoir s'abonner sur le site grâce à un paiement sécurisé : Le client doit pouvoir s'abonner en ligne au service Vigilate de manière sécurisée.
+\item Pouvoir consulter à tous moment le référencement des failles connues. : Le client doit pouvoir accéder simplement à toutes les failles connues par Vigilate s'il souhaite en savoir plus sur un sujet.
+\end{itemize}
+
+\section{Modules principaux du projet}
+VM: pour le client souhaitant garder leurs informations en interne, nous avons prévu de proposer une machine virtuelle.\\
+API: L'api est le c\oe{}ur central de Vigilate. Ce module gère l'interaction entre les autres modules. Elle surveille aussi la sortie de nouvelles vulnérabilités et envoie les alertes aux personnes concernées.\\
+Scanner de programme : les entreprises peuvent avoir beaucoup de programmes à surveiller et les rentrer à la main serait contraignant. Nous allons donc mettre en place un scanner de programme qui parcourra toute la configuration d'une machine et qui rentrera ces informations dans une base de données. L'utilisateur pourra ensuite (dé)sélectionner les programmes qu'il veut garder.\\
+Site web: nous avons choisi une plateforme web pour proposer notre outil. Plus facile et rapide, car pas besoin d'installation de logiciel. Il comportera 3 modules : le module \og{}Programme\fg{} avec la liste des programmes, leurs versions, une section \og{}je sélectionne / je déselectionne\fg{} et l'attribution de niveau de criticité pour chaque programme; le module \og{}personnalisation\fg{} qui permettra de définir le type d'alerte qu'on souhaite choisir en fonction du niveau de criticité; le module paiement (pour le paiement en ligne).\\
+Vigilate proposera 3 abonnements différents. C'est un outil principalement destiné aux entreprises, il y aura donc la possibilité de se rencontrer pour signer un contrat. Mais nous proposerons aussi de payer directement depuis notre site internet grâce à un module paiement Paypal pour souscrire aux offres plus rapidement. Nous avons choisi le module Paypal, car il garantit un moyen de paiement sécurise et il est à ce jour le plus utilisé.\\
