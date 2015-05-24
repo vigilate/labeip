@@ -1,0 +1,71 @@
+\section{Qu'est-ce qu’un EIP et Epitech}
+Epitech, école de l'innovation et de l'expertise informatique propose un cursus en 5 années, basé sur une pédagogie par projet (à réaliser seul ou en groupe). L'un de ces projets, l’EIP (Epitech Innovating Project), réalisé par groupes de 6 à 15 étudiants, démarre au cours de la 3\ieme{} année et se déroule sur 2 ans et demi. Ce projet doit être particulièrement innovant, car son objectif est d’être commercialisable à la fin de la 5\ieme{} année d’Epitech.
+
+\section{Sujet de votre EIP}
+Le but de Vigilate est d’avertir les utilisateurs des services obsolètes ou potentiellement vulnérables affectant en particulier leur infrastructure (sites web, réseau d'entreprises, logiciels), dans le but de les informer des risques techniques encourus et des éventuelles mises à jour ou corrections à appliquer.
+Cela sans effectuer de scan de vulnérabilité.
+Nous proposons cependant un outil de scan de programme qui envoie la liste sur notre plateforme web.
+
+\section{Principe de base du système futur}
+Vigilate est un outil permettant de tenir informé chaque utilisateur des dernières vulnérabilités publiques pour chacun de ses programme. Cet outil est adapté à plusieurs types de clients: aussi bien un webmaster souhaitant garder un oeil sur le CMS de son site web, qu’une entreprise voulant veiller à la sûreté de ses services informatiques.
+Vigilate sera composé de cinq grands blocs fonctionnels: site web (frontend), programme de scan, backend, api et machine virtuelle.
+\\
+La partie \textbf{frontend} du site web communiquera via l’api avec la partie backend. A partir du site web, l’utilisateur pourra personnaliser son utilisation de Vigilate en (dé)sélectionnant les programmes de son choix, leur attribuer un niveau de criticité mais aussi choisir son système d’alerte (mail, sms, notification).
+\\
+La partie \textbf{backend} est la face caché de Vigilate: une partie base de donnée avec la liste des programmes installés par les utilisateurs, leurs paramétrages et les vulnérabilités. La seconde partie qui déterminera quels programmes sont vulnérables et avertir les utilisateurs par le moyen choisi.
+\\
+Le \textbf{programme de scan} communiquera également via l’api avec le backend pour mettre à jour la liste de logiciels que veut surveiller l’utilisateur. Un petit logiciel devra être installé par l’utilisateur et il scannera la machine sur lequel il est installé. Une liste de tous les programmes ainsi que leur version sera enregistrée directement dans une base de données. A partir du frontend l’utilisateur pourra choisir si il est intéressé par tous les programmes ou alors faire un choix de ceux qu’il veut surveiller.
+\\
+\textbf{L’API}  permet de lier tous les composants cités ci-dessus en leur permettant de communiquer et d'interagir entre eux, en plus de lier les composants, elle gérera les abonnements et sera disponible pour les revendeurs.
+\\
+\textbf{La machine virtuelle} sera une sorte de copie locale de ce qu’il y a sur nos serveurs. Elle permettra aux entreprises qui le souhaitent d’avoir un niveau de sécurité encore plus important. En effet les utilisateurs resteront informé sans qu’on ait accès à leur liste de programmes.
+L'objectif étant d’informer l’utilisateur le plus rapidement possible et d’être simple d’utilisation.
+\\
+L’équipe est composée de 6 personnes:\\
+\begin{itemize}
+\item Kévin Soules\\
+\item Morgane Harscoat\\
+\item Daniel Mercier\\
+\item Flavien Keller\\
+\item Manuel Poncet\\
+\item Prune Budowski\\
+\end{itemize}
+
+
+A la fin de EIP, nous espérons avoir un site web fonctionnel que l’on pourra proposer aux entreprises.
+
+\section{Glossaire}
+\noindent
+
+\vskip 0.1cm
+\textbf{- A -}\\
+\vskip 0.1cm
+
+\textit{API (Application Programming Interface)}: un enssemble de classes, de méthodes ou de fonction qui sert de façade par laquelle un logiciel offre des services à d'autres logiciels.\\
+
+\vskip 0.1cm
+\textbf{- B -}\\
+\vskip 0.1cm
+
+\textit{Backend}: un back-end est un terme désignant un étage de sortie d'un logiciel devant produire un résultat. On l'oppose au front-end (aussi appelé un frontal) qui lui est la partie visible de l'iceberg.\\
+
+\vskip 0.1cm
+\textbf{- C -}\\
+\vskip 0.1cm
+
+\textit{CMS (Content Management System)}: c'est une famille de solution destinés à la conception et à la mise à jour dynamique de sites Web. Ils permettent de s'intéresser qu'au contenu à publier.
+
+\textit{CVE (Common Vulnerabilities and Exposures)}: dictionnaire d'informations publiques relatives aux vulnérabilités informatiques. Par métonymie, on emploie souvent le terme CVE à la place de CVE ID (ou identifiant CVE), qui lui désigne le numéro qui renvoie à la fiche descriptive complète de cette vulnérabilité. Exemple: CVE-2013-4343.\\
+
+\vskip 0.1cm
+\textbf{- F -}\\
+\vskip 0.1cm
+
+\textit{Frontend}: La partie frontend sera la partie avec laquelle l'utilisateur va interagir. Le serveur frontal intercepte les requêtes utilisateur et les ré-envoie vers le serveur backend. \\
+
+\vskip 0.1cm
+\textbf{- V -}\\
+\vskip 0.1cm
+
+\textit{VM (Machine Virtuelle)}: une machine virtuelle est une illusion d'un appareil informatique créée par un logiciel d'émulation. Le logiciel d'émulation simule la présence de ressources matérielles et logicielles permettant d'exécuter des programmes dans les mêmes conditions que celles de la machine simulée.\\
+
