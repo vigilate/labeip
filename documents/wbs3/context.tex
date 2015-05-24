@@ -1,0 +1,18 @@
+\textcolor{myBlue}{\chapter{Contexte}}
+\section{Hypothèses}
+\begin{itemize}
+\item Le site web Vigilate sera développé en python sur le framework Django et le front-end utilisera Angular.js, ces technologies sont reconnues et très performantes.\\
+\item Le scanner de programmes sera également développé en python pour une portabilité optimale.\\
+\item La machine virtuelle proposée aux clients sera basée sur Debian pour plus de stabilité.\\
+\item Vigilate proposera à ses clients plusieurs types d'abonnement qui s'adapteront aux besoins de chacun (20 programmes surveillés / programmes illimités / assistance personnalisée).\\
+\item Vigilate alertera d'une nouvelle vulnérabilité via une notification sur le site web, un email ou encore un SMS.\\
+\end{itemize}
+\section{Contraintes}
+\begin{itemize}
+\item La réactivité sera un des points principaux à respecter afin de ne laisser s’échapper qu’un minimum de temps entre la diffusion d’une CVE et sa transmission aux clients concernés.\\
+\item Être sécurisé afin d’éviter impérativement une potentielle fuite d’informations relative aux clients ou à notre infrastructure.\\
+\item La portabilité de la solution, en effet, le projet se veut multiplateforme car l’exploitation des failles ne se limite pas à une seule plateforme.\\
+\item Proposer une réaction adaptée au client en fonction de la vulnérabilité découverte (C’est-à-dire couper le service concerné, le suspendre, proposer une mise à jour si elle existe).\\
+\item La solution ne devra pas consommer beaucoup de mémoire, au cas où elle est amenée à fonctionner sur des environnements réduits ou limités.\\
+\item La fréquence de consultation des nouvelles vulnérabilités sera adaptée à chaque infrastructure. En effet, les machines hébergeant la solution ne devront pas voir leur trafic réseau impacté par l’installation de la solution. Le trafic doit rester optimal en toutes circonstances.
+\end{itemize}
