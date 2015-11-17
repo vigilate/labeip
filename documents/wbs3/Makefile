@@ -5,7 +5,7 @@
 ## Login   <soules_k@epitech.net>
 ## 
 ## Started on  Sat Jan 31 20:01:50 2015 eax
-## Last update Sun May 24 19:47:40 2015 eax
+## Last update Tue Nov 17 14:52:42 2015 
 ##
 
 LATEX	= pdflatex
@@ -15,11 +15,7 @@ TARGET	= $(MAINSRC:.tex=.pdf)
 
 all: $(TARGET)
 
-#this is uglyy, need to fix
 $(TARGET): $(MAINSRC)
-	$(LATEX) $<
-	$(LATEX) $<
-	$(LATEX) $<
 	$(LATEX) $<
 
 clean:

@@ -5,7 +5,7 @@
 ## Login   <soules_k@epitech.net>
 ## 
 ## Started on  Sat Jan 31 20:01:50 2015 eax
-## Last update Sun Apr  5 19:17:52 2015 eax
+## Last update Tue Nov 17 14:53:36 2015 
 ##
 
 LATEX	= pdflatex
@@ -14,12 +14,7 @@ MAINSRC	= 2017_WBS2_vigilate.tex
 TARGET	= $(MAINSRC:.tex=.pdf)
 
 all: $(TARGET)
-
-#this is uglyy, need to fix
 $(TARGET): $(MAINSRC)
-	$(LATEX) $<
-	$(LATEX) $<
-	$(LATEX) $<
 	$(LATEX) $<
 
 clean:
