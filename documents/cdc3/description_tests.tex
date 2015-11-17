@@ -1,0 +1,21 @@
+\section{Tests pendant la phase de développement}
+L’utilisation de l'outil \href{https://travis-ci.org/}{Travis-CI} fourni avec \href{http://fr.wikipedia.org/wiki/GitHub}{GitHub} afin d'assurer une intégration continue du projet.\\
+Travis CI permet d'automatiser une suite de tests à chaque contribution au projet et permet par la même occasion de rejeter la contribution si celle-ci ne valide pas la série de tests préprogrammés qui sont jugés indispensables à la pérennité du produit.\\
+De cette façon, l'intégration continue grâce à Travis CI nous permet de s'assurer que chaque modification ne produit pas de régression au sein du développement du projet.\\
+Travis nous permet donc d'automatiser les tests de régression et d'avoir l'état précis de l'avancement du projet simplement et rapidement.\\
+A noter que Travis couvre donc toute la partie tests unitaires et tests fonctionnels nécessaires au développement de notre projet.\\
+
+\section{Tests de validation}
+\begin{itemize}
+\item Validation fonctionnelle\\
+Ces tests auront pour objectif la vérification du respect des exigences imposées à la création du projet. Vérifier si les besoins et les réponses à ces besoins sont respectés et conformes aux attentes du client.\\
+\item Validation solution\\
+Ces tests auront pour objectif la vérification des exigences d’utilisations de la solution, chaque cas d’utilisation du projet sera donc testé individuellement et validé individuellement, de façon à assurer une couverture maximale et précise de la validation de l’ensemble de la solution.\\
+\item Validation performance\\
+Ces tests auront pour objectif la vérification de la conformité de l’ensemble du projet face à des utilisations intenses afin d’essayer de mettre en évidence des problèmes liés à la stabilité et à la robustesse de la solution (Non résistance à un pic de charge par exemple).\\
+\item Test de vulnérabilité\\
+Des tests d'intrusions complet en \href{http://fr.wikipedia.org/wiki/Bo\%C3\%AEte_blanche}{boîte blanche} garantissant la sécurité de l'ensemble de la solution.
+Cette analyse en profondeur de la sécurité de notre solution nous permet de garantir la fiabilité et la stabilité de celle-ci lorsqu’elle est confrontée à des attaques diverses et variées.\\
+C'est une étape importante dans le développement d'un projet, à plus forte raison lorsque la cible produit est en rapport avec la sécurité applicative. C'est pour cette raison qu'un test d'intrusion sera réalisé tout les 3 mois.\\
+
+\end{itemize}

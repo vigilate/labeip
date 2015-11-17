@@ -1,0 +1,30 @@
+\section{Environnement de réalisation}
+Notre environnement sera composé des outils suivants:\\
+\begin{itemize}
+\item github, une plateforme de gestion et d'hébergement de projet. Système de gestion de version, Système d’issue.
+\item Travis-ci, un outil permettant de réaliser des tests d’intégration continue sur un projet informatique. Avant de valider un commit, cette plateforme compile le projet et lance les tests unitaires.\\
+\item Python, le langage de programmation qui sera utilisé afin de réaliser les différentes tâches.\\
+\item LaTeX, langage permettant de mettre en forme un document texte. Cet outil sera utilisé pour la documentation.\\
+\item pep8, la norme de programmation que l’on respectera pour python. (En utilisatant l'outil automatique pylint)\\
+\end{itemize}
+
+\section{Composants existants}
+Nous allons utiliser un moyen de paiement Paypal pour garantir une sécurité à nos utilisateurs. Paypal est un système de paiement en ligne, très simple d’utilisation. Il suffit de s’inscrire, d’entrer ses coordonnées bancaires puis quand un site de vente par exemple propose ce service, un clic sur le logo Paypal qui redirigera directement vers le site lui-même, une connexion, une validation du paiement et c’est terminé. Ce système permet de payer rapidement sans entrer nos coordonnées bancaires sur des sites dont on ne connaît pas forcément le niveau de sécurité des informations. Paypal a été créé en 1998 et a été rapidement racheté par Ebay en 2002 ce qui garantit un cycle de vie long. Toute fois si le système n’était plus utilisable, il nous serait toujours possible d’utiliser d’autre moyen de paiement.\\
+Mitre est le flux RSS que nous allons utilisé pour connaître les vulnérabilités sorties. https://cve.mitre.org/
+Django est le framework web que nous utiliseron côté serveur pour développer notre site.
+AngularJs sera utilisé côté client pour l'affichage des pages.
+
+\section{Gestion de la sécurité}
+Nous sommes un outil de sécurité, donc on se doit d’avoir une infrastructure exempte de vulnérabilité. Il ne faut en aucun cas qu’une personne puisse accéder aux informations d’un autre compte.
+Dans ce cadre, plusieurs mesures seront prises:
+\begin{itemize}
+\item Mise en place de bonne pratique de développement. (pylint/pep8)
+\item Test unitaires permettant de s’assurer du bon fonctionnement des outils.
+\item Audit de la solution tout les 3 mois.
+\item Chiffrement des communications.
+\item Chiffrement des données (disque dur et en base).  
+\end{itemize}
+
+
+\section{Points sensibles}
+Le flux rss que l’on utilisera pour récupérer nos données est un point essentiel de notre solution. Si cette source disparaît, nous devrons trouver un autre moyen pour lister les derrières vulnérabilités. Une solution alternative étant de suivre les mailing list de sécurité et automatiquement détecter les ajout de CVE.\\

@@ -1,0 +1,73 @@
+\section{Structure générale}
+Vigilate est une solution composé de 3 programmes différents :\\
+\begin{itemize}
+\item Un site web\\
+\item Un scanner\\
+\item Un backend\\
+\end{itemize}
+Vigilate pourra optionnellement être distribué sur une vm.\\
+\section{Le site web}
+Le site web servira à la personnalisation des alertes. On pourra choisir quels programmes suivre. On pourra aussi choisir un niveau de criticité minimum par programme  pour être prévenu. Le site permettra aussi de choisir le ou les moyens par lesquels on veut être prévenu lors de la découverte d’une vulnérabilité (mail, sms ou notifications sur le site). Le site web enverra ces données au backend via l’api pour qu’il mette à jour la base de donnée.\\
+Le site web utilisera django côté serveur, la communication avec l’api se feras donc en python. Cotés client il utiliseras angularJS afin de mieux interagir avec l'utilisateur\\
+
+\section{Le scanner de programme}
+Le scanner de programmes est là par soucis de simplicité d’utilisation, ce sera un programme en python (donc portable) qui récupérera la liste des programmes installés et les enverra au backend via l’api pour mettre à jour la base de donnée. Le scanner pourra être lancé manuellement ou planifié pour s’exécuter régulièrement (par exemple une fois par semaine).\\
+
+\section{Le Backend}
+Le backend sera le coeur de vigilate. C’est un programme qui récupérera les cve dès leurs sortie via le flux rss du site cve.mitre.org. Une fois récupérées il les stockera dans la base de données et regardera si un des clients utilise ce programme, si c’est le cas il vérifiera ensuite si la version est vulnérable. Puis il ira voir si le niveau de criticité est égale ou supérieur à celui précisé par le client via le site web, si c’est le cas il préviendra le client par tous les moyens que celui-ci aura choisi.\\
+Le backend recevra aussi  les informations du scanneur et les stockera dans une base de donnée.\\
+Le backend hébergera aussi l’api de vigilate, cette api permettra au backend de communiquer avec le scanner et le site web, elle récupérera leur requêtes et fera les modifications nécessaires dans la base de données. L’api permettra de modifier la liste de programmes installés et leurs versions ainsi que de changer les préférences (niveau de criticité et moyen de contact).\\
+Il y aura aussi une API publique. Cette API sera utilisable par client qui souhaite intégrer Vigilate à leur solution. On peut par exemple imaginer un hébergeur qui propose le service vigilate à ses clients afin qu’il puissent monitorer la sécurité des programmes qu’ils utilisent.\\
+Le backend seras lui aussi codé en python, les API public et interne seront de type REST. Ce qui permettra une utilisation simple et clair avec angularjs.\\
+
+
+\section{La vm}
+Pour finir Vigilate offrira optionnellement une vm.\\
+Les serveurs de Vigilate contiendront la liste des programmes de chaque utilisateur. Ces informations peuvent être sensibles si elles appartiennent à des entreprises ayant besoin d’un grand niveau de sécurité. Vigilate en mode VM répond à ce problème.
+\\
+Ce sera machine virtuelle prête à fonctionner qui contiendra le site web et le backend de vigilate. Un système de mises à jour permettra à la vm d’avoir les composants de vigilate constamment à jours sans avoir à la réinstaller. La vm restera connecté à notre API de façon chiffrée et sécurisée, afin de récupérer les nouvelles vulnérabilités qui sont publiées. C’est la VM qui se charge de comparer l’information avec ses données locales pour envoyer ou non les alertes de sécurité.
+\\
+Vigilate en mode VM permet aux entreprises critiques de garder en local les informations sensibles de sécurité de leur infrastructure. Aucune information sortira du réseau, en effet la VM utilise seulement un flux réseau descendant pour les mises à jour.
+
+
+% \begin{figure}[H]
+%   \vspace*{2cm}
+%   \caption{Top \textgreater{} Site web}
+%   \centering
+%   \vspace*{0.5cm}
+%   \includegraphics[max width=12cm]{wbs3_web.png}
+% \end{figure}
+
+\section{Cas d’utilisation}
+\begin{figure}[!h]
+  \caption{Schema UML de cas d'utilisation}
+  \centering
+  \includegraphics[width=18cm]{uml1.png}
+\end{figure}
+\begin{figure}[!h]
+  \caption{Diagramme d'intéraction}
+  \centering
+  \includegraphics[width=18cm]{uml2.png}
+\end{figure}
+\newpage
+\section{Flux et interactions}
+Ci-dessous un schéma explicatif de notre projet. On peut y voir chacun de nos modules ainsi que leurs interactions, d'abord depuis notre serveur distant puis à partir d'une machine virtuelle.\\
+\begin{itemize}
+\item Le serveur distant correspond au serveur qui sera utilisé pour héberger notre solution. Les utilisateurs se connectant sur notre site, auront accès au site web présent sur cette machine.
+\item La VM correspond à la solution qui sera installé dans les entreprise qui ne souhaitent pas passer heberger leurs liste de programmes sur notre serveur distant.
+\end{itemize}
+Comme on peut le voir, les schémas sont très ressemblants. Une seule différence est à noté, c'est le flux entrant d'information des nouvelles vulnérabilités. (\og{}Recherche \& stockage des vulnérabilités\fg{}). En effet, le serveur distant utilise directement la source officiel (le flux rss) alors que les VM se fournissent sur notre serveur qui fait passerelle vers l'information obtenue des flux RSS. Cela pour deux raisons principales : ne pas surcharger les serveurs rss sources et pouvoir garantir les informations traversant par ce flux. (Éviter d'avoir un accès sur la VM vers un partie tiers).\\
+
+\begin{figure}[!h]
+  \caption{Flux et intéractions: Serveur distant}
+  \centering
+  \vspace*{0.5cm}
+  \includegraphics[width=18cm]{serveur-distant.png}
+\end{figure}
+
+\begin{figure}
+  \caption{Flux et intéractions: VM}
+  \centering
+  \vspace*{0.5cm}
+  \includegraphics[width=18cm]{vm.png}
+\end{figure}

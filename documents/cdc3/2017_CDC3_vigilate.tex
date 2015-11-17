@@ -1,0 +1,156 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[absolute]{textpos}
+\usepackage[svgnames]{xcolor}
+\usepackage{colortbl}
+\usepackage{lastpage}
+\usepackage{url}
+\usepackage[colorlinks,citecolor=DeepPink4,linkcolor=DarkRed,urlcolor=DarkBlue]{hyperref}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage{datetime}
+\usepackage{lipsum}
+\usepackage{enumerate}
+\usetikzlibrary{matrix}
+
+\newcommand{\doctitle}{CDC3}
+\newcommand{\doclongtitle}{Cahier des Charges 3}
+
+\title{\doctitle{} Vigilate}
+\author{Soules Kévin, Mercier Daniel, Budowski Prune, Harscoat Morgane, Poncet Manuel, Keller Flavien}
+\date{\today}
+
+\definecolor{myBlue}{RGB}{23,54,93}
+\newdateformat{slashdate}{\twodigit{\THEDAY}/\twodigit{\THEMONTH}/\THEYEAR}
+
+\titleformat{\section}[block]{\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}[block]{\hspace{2em}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[block]{\hspace{3em}}{\thesubsubsection}{1em}{}
+  
+\geometry{
+  a4paper,
+  left=20mm,
+  right=20mm,
+}
+
+\setlength{\unitlength}{1mm}
+\addtolength{\headheight}{1.5\baselineskip}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\fancypagestyle{eip}{
+  \fancyhf{}
+  \fancyhead[L] {
+    \includegraphics[width=3cm]{../../logos/logo_eip.png}
+  }
+  \fancyhead[R] {
+    \colorbox{myBlue}{
+      \textcolor{white}{
+        \Large \textbf{[2017][Vigilate][\doctitle{}]}
+      }
+    }
+  }
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot[L]{
+    \textcolor{gray}{
+      \{EPITECH.\}
+    }
+  }
+  \fancyfoot[C] {Vigilate \textbar{} \today{}}
+  \fancyfoot[R]{
+    \ifnum\value{page}>0
+    \thepage/\pageref{LastPage}
+    \fi
+  }
+}
+
+\makeatletter
+\let\ps@plain\ps@eip
+\makeatother
+
+\pagestyle{eip}
+
+
+\begin{document}
+\date{\slashdate\today}
+\setcounter{page}{-4}
+
+% --- (1) Page de garde ---
+
+\thispagestyle{empty}
+\vspace*{\stretch{2}}
+\begin{center}
+  \textcolor{myBlue}{\Huge \textbf{EIP Vigilate}}\linebreak
+  \vspace*{\stretch{1}}
+  \textcolor{gray}{\textit{\Large \doclongtitle{} (\doctitle{})}}\linebreak
+  \vspace*{\stretch{1}}
+  {\today}
+\end{center}
+\vspace*{\stretch{1}}
+\newpage
+
+% --- (2) Résumé ---
+
+\vspace*{\stretch{1}}
+\begin{flushleft}
+  \textcolor{myBlue}{\textit{\large \textbf{Résumé du document}}}\linebreak
+\end{flushleft}
+\input{resume.tex}
+\vspace*{\stretch{1}}
+\newpage
+
+% --- (3) Cartouche + révisions ---
+
+\begin{flushleft}
+  \vspace*{\stretch{1}}
+  \textcolor{myBlue}{\textit{\large \textbf{Description du document}}} 
+  \bigbreak
+  \input{cartouche.tex}
+  \vspace*{\stretch{2}}
+  \bigbreak
+  \bigbreak
+  \textcolor{myBlue}{\textit{\large \textbf{Tableau des révisions}}}
+  \bigbreak
+  \input{revisions.tex}
+  \vspace*{\stretch{1}}
+\end{flushleft}
+
+% --- (4) Tables des matières ---
+
+\tableofcontents
+
+% --- (5) Rappel eip ---
+
+\textcolor{myBlue}{\chapter{Rappel de l'EIP}}
+\setcounter{page}{1}
+\input{rappel_eip.tex}
+
+% This is where we add the \input for all the other pages.
+
+\textcolor{myBlue}{\chapter{Contraintes}}
+\input{contraintes.tex}
+
+\textcolor{myBlue}{\chapter{Description des différentes parties du programme à réaliser}}
+\input{description_parties.tex}
+
+\textcolor{myBlue}{\chapter{Présentation de l’environnement de réalisation}}
+\input{pres_environnement.tex}
+
+\textcolor{myBlue}{\chapter{Description des tests}}
+\input{description_tests.tex}
+
+\textcolor{myBlue}{\chapter{Organisation projet}}
+\input{organisaion_projet.tex}
+
+\textcolor{myBlue}{\chapter{Conclusion}}
+\input{conclusion.tex}
+
+\textcolor{myBlue}{\chapter{Annexes}}
+\input{annexes.tex}
+
+\end{document}

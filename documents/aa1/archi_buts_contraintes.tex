@@ -1,0 +1,28 @@
+\section{Contraintes fonctionnelles}
+\begin{enumerate}
+\item Portabilité\\
+La portabilité sera la principale contrainte fonctionnelle à laquelle la réalisation du projet devra se plier.\\
+  La machine virtuelle devra être conçue de façon à être utilisable sur les systèmes d'exploitation les plus répandus, il en va de même pour le site web, devant impérativement prendre en charge les 4 grands navigateurs (IE, Firefox, Google Chrome, et Safari) à jour ou non, afin que son fonctionnement ne soit pas altéré selon la configuration de l’utilisateur.\\
+\item Respect des conditions légales\\
+  Opérant dans le domaine de la sécurité informatique, le projet et la façon dont il sera conçu devront indubitablement se plier aux textes de loi en vigueur concernant l’informatique et les libertés relatives à ce domaine, notamment les lois imposées par la CNIL.\\
+\item Analyses fréquentes
+La sécurité et la stabilité faisant partie de nos exigences, et la fluidité du fonctionnement de notre système allant de paire avec, chaque ajout de code au projet devra être soumis à des vérifications et des tests unitaires, dans l'optique de conserver une structure logicielle solide et sûre.\\
+Parallèlement à cela, des tentatives d'intrusions, des audits de codes, seront planifiés tous les 3 mois afin de palier aux éventuels soucis de conception pouvant mener à des risques de sécurité, qui seraient passés inaperçus lors de la mise en production.\\
+\end{enumerate}
+Parallèlement à cela, des tentatives d'intrusions, des audits de codes, seront planifiés tous les 3 mois afin de palier aux éventuels soucis de conception pouvant mener à des risques de sécurité, qui seraient passés inaperçus lors de la mise en production.\\
+
+\section{Contraintes non fonctionnelles}
+\begin{enumerate}
+\item Simplicité de l'interface\\
+ Dans un souci de simplicité d'utilisation, il faudra que l'interface utilisateur de notre système soit intuitive et à la portée de tous, de façon à favoriser la prise en main de cette solution par un utilisateur lambda, n'ayant aucune compétence avancée en informatique.\\
+ Différents types d'alertes pourront être envoyés au client, une alerte détaillée concernant la vulnérabilité, ses détails techniques et ses caractéristiques, pouvant être destinée à l'équipe informatique du client, et une alerte plus concise pouvant par exemple être destinée à un responsable.\\
+\item Réactivité
+  Afin d'optimiser l'efficacité de notre solution, la réactivité est l'un des points clés à respecter.\\
+  Dans le but d'informer les utilisateurs des vulnérabilités les concernant dans les plus brefs délais, nous nous devrons de concevoir et maintenir un système réactif au niveau la récupération et la transmission des données, devant mettre moins de 5 secondes à avertir un utilisateur concerné par une faille via les notifications sur notre site, et moins d’une minute par mail et sms.\\
+  Cela permettant au client de faire corriger les vulnérabilités de son système au plus vite.\\
+\item Concevoir un système et une plateforme sécurisés\\
+  Le but de notre solution étant de favoriser la sûreté des services utilisés par nos clients, avoir un produit et une infrastructure stable fait également partie des points clés à respecter.\\
+  Il sera donc impératif de sécuriser correctement le site, les différents services que nous utilisons et par conséquent, nos données via chiffrement des données utilisateurs et des espaces de stockages, afin d'éviter toutes fuites de données relatives à un client, à son système informatique, ou à notre propre infrastructure.\\ 
+\end{enumerate}
+Enfin, le système en machine virtuelle destiné à être installé chez le client devra être développé de façon à être imperméable à toute forme d'attaque actuellement prévisible, il va de soi qu'après sa fonction principale de détection et d'alerte, la priorité de ce système concerne le fait qu'il ne puisse, ou le moins possible, être lui-même compromis par une attaque informatique.\\
+Des tests de sécurité seront effectués tous les 3 mois sur la plateforme ainsi que la machine virtuelle.\\
