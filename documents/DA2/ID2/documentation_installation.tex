@@ -1,0 +1,71 @@
+Pour la partie serveur, une installation de Linux est nécessaire, l’explication est faite pour une installation sur la distribution Ubuntu mais est facilement adaptable pour n’importe quelle distribution Linux. Généralement remplacez\\
+\texttt{\$> apt-get install}\\
+par la commande d’installation de paquets de votre distribution.\\
+Avant toute installation mettez à jour vos dépôts avec la commande\\
+\texttt{\$> sudo apt-get update}\\
+\section{Backend}
+Python 3 est nécessaire pour la partie serveur de Vigilate, il est installé par défaut sur Ubuntu et bon nombre d’autre distributions. Si jamais ce n’est pas le cas, utilisez la commande\\
+\texttt{\$> sudo apt-get install python3}.\\
+La partie serveur de vigilate est stockée sur un serveur git, il faut donc installer git afin de pouvoir la récupérer. Pour cela utilisez la commande\\
+\texttt{\$> apt-get install git}.\\
+Afin d’installer django, il faut utiliser le gestionnaire de paquet python (pip). Pour l’installer utilisez la commande :\\
+\texttt{\$> sudo easy\_install pip3}\\
+La partie serveur de Vigilate est basée sur Django, pour installer Django et les autres modules python nécessaire utilisez la commande\\
+\texttt{\$> sudo pip3 install Django django-filter djangorestframework mysqlclient psycopg2 PyMySQL setuptools}.\\
+\\
+Pour le stockage des mots de passe Vigilate utilise un hash appelé Argon2, il faut l’installer avec les commandes suivantes :\\
+\texttt{\$> sudo apt-get install python3-dev binutils}\\
+\texttt{\$> git clone \url{https://github.com/vigilate/module_com_bdd.git}}\\
+\texttt{\$> cd module\_com\_bdd}\\
+\texttt{\$> make}\\
+\texttt{\$> sudo make install}\\
+\\
+Pour installer la partie serveur de Vigilate utilisez les commandes suivantes :\\
+\texttt{\$> git clone \url{https://github.com/vigilate/backend.git}}\\
+\texttt{\$> cd backend}\\
+\texttt{\$> python3 ./manage.py makemigrations}\\
+\texttt{\$> python3 ./manage.py migrate}\\
+\\
+Pour créer le super utilisateur Django, utilisez la commande suivante et répondez aux questions :\\
+\texttt{\$> python3 ./manage.py createsuperuser}\\
+\\
+Le frontend de Django est nginx, pour l’installer utilisez la commande\\
+\texttt{\$> sudo apt-get install nginx}\\
+Pour configurer nginx il faut utilisez les commandes suivante :\\
+\texttt{\$> echo H4sIAEkbJlcAA41RwU7DMAy99yss7cqWFgmtWq+IG99QeY1pA2lS6mRsTP13sqSdYNIknEMs+z3n\textbackslash{}\\
+PccP7EbCHuQ7mtbCOYMQTOOBRvBGHXdCiM72JA6qVRodiT02H2SkYBtuV0XCamYUj9tNHk6xK/O8\textbackslash{}\\
+qLIpy+bOOYtArdiRgRhlnshNhyOTizXv3tZllbAr6PEIftAWJbD6poTWioyrQ6veW3mqLw3YPr1e\textbackslash{}\\
+Sc/JSU9SYXrTNuiUNSBiDWaTl0CtkOGOwYhOEqfsZhK7kDT/nZTQf0at4EUZ1Pr0ELZtZOBrMNas\textbackslash{}\\
+k8SRPj2xY3AWXEeLp7TLzY2WXyr8F7eqHpAZ5h+trj1lGu0lxfyOzoU+Ys+L2ukH90dS3CMCAAA=\textbackslash{}\\
+| base64 -d | gzip -d | sudo tee /etc/nginx/conf.d/vigilate.conf}\\
+Une fois cette commande exécutée il faut éditer le fichier de configuration, pour cela ouvrez le fichier \path{/etc/nginx/conf.d/vigilate.conf} avec votre éditeur de texte favori est remplacez chaque occurance de \path{/home/vigilate} par le chemin vers le dépôt du backend que vous avez cloné précédemment.\\
+\\
+\section{Scanner de programme}
+Pour le scanner du programme, il faut avoir python 3 d’installé.
+Si vous êtes sous Linux utilisez la commande “sudo apt-get install python3”, Pour Mac os X allez sur la page : \url{https://www.python.org/downloads/mac-osx/} et choisissez l’une des version python 3 disponible et installez là. Pour les utilisateurs Windows allez sur la page \url{https://www.python.org/downloads/windows/} et téléchargez l’un des installeurs python 3 et installez le.\\
+\\
+Maintenant, il faut installer les dépendances du scanneur de programme, pour cela il faut commencer par install oer le gestionnaire de paquets de python pip. Pour Linux ouvrez un terminal et lancez la commande\\
+\texttt{\$> sudo easy\_install pip3}\\
+Pour Mac os X et Windows pip est supposé être installé avec python, si ce n’est pas le cas suivez les instructions sur cette page : \url{https://pip.pypa.io/en/stable/installing/}
+Pour installez les dépendances sous Linux ou Mac os X utilisez la commande :\\
+\texttt{\$> sudo pip3 install requests}\\
+Pour windows ouvrez un terminal et utilisez les commandes suivantes :\\
+Pour windows 7 :\\
+\texttt{\$> cd \path{AppData\Local\Programs\Python\Python35}}\\
+Pour Windows 10 :\\
+\texttt{\$> cd \path{AppData\Local\Programs\Python\Python35-32}}\\
+Ensuite, la commande est la même pour les 2 versions de Windows :\\
+\texttt{\$> python.exe \path{Scripts\pip.exe} install requests}\\
+\\
+Maintenant, il faut récupérer le scanneur de programmes il y à 2 solutions, en utilisant git (voir l’installation de la partie serveur pour installer git) via la commande\\
+\texttt{\$> git clone \url{https://github.com/vigilate/program_scanner.git}}\\
+sous Linux et Mac os X. Pour Windows cloner le dépôt \url{https://github.com/vigilate/program_scanner.git}
+Pour une installation plus simple, vous pouvez télécharger une version zippé du scanneur de programme avec ce lien : \url{https://github.com/vigilate/program_scanner/archive/master.zip}. Dézippez le et utilisez la commande suivante pour exécutez le scanner de programme :\\
+Windows 7 :\\
+\texttt{\$> \path{AppData\Local\Programs\Python\Python35\python.exe} \path{chemin\vers\le\dossier\du\scanner\scanner.py}}\\
+Windows 10 :\\
+\texttt{\$> \path{AppData\Local\Programs\Python\Python35-32\python.exe} \path{chemin\vers\le\dossier\du\scanner\scanner.py}}\\
+Linux :\\
+\texttt{\$> python3 \path{chemin\vers\le\dossier\du\scanner\scanner.py}}\\
+Mac os X :\\
+\texttt{\$> python3 \path{chemin\vers\le\dossier\du\scanner\scanner.py}}\\

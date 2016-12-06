@@ -1,0 +1,18 @@
+\section{Github}
+Le projet est hébergé sur github. Nous utilisons plusieurs fonctionnalitées de cette outil:
+\begin{itemize}
+\item Gestion de versions (git)\\
+Github nous permet simplement de développer à plusieurs sur un même code.
+\item Issue
+Nous utilisons les Issues pour lister les bugs et/ou features relatives à notre projet.
+\item Milestone
+Nous utilisons les Milestone pour préciser si une issue doit être incluse dans la prochaine deadline ou pas.
+\item Pull Request
+Nous utilisons les Pulls Request pour proposer des changement sur le code.
+\end{itemize}
+
+\section{Méthodologie}
+Que ce soit pour résoudre une issue, pour ajouter une fonctionnalité, ou même pour changer quelques lignes de codes, une branche dédiée tout être utilisé. Par exemple, si une issue numéro \#42 signale qu'il y a un bug sur la connexion des utilisateurs, le développeur qui va se charger de réparer ce bug créera une branche avec un nom similaire à ``issue-42-connexion-utilisateur''.\\
+\\
+Une fois les commits push sur cette branche, le développeur peut voir si les tests d'intégrations travis sont passés. Si c'est le cas, le développeur crée alors une Pull Request pour proposer ses changements sur Master.\\
+À ce moment-là, un des développeurs principaux vérifie les changements effectués, vérifie que les tests unitaires passent et que la couverture de test n'a pas baissé. Si tout est en règle, alors il peut accepter cette Pull Request. Dans le cas contraire, il indiquera à la personne ayant envoyé la Pull Request pourquoi elle n'a pas été acceptée.

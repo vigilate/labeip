@@ -1,0 +1,109 @@
+\section{Partie Serveur}
+L’installation de la partie serveur de Vigilate est basée sur plusieurs scripts utilisés par Travis pour exécuter nos tests d’intégration continue.
+Pour commencer l’installation, une installation de Linux est nécessaire, l’explication est faite pour une installation sur la distribution Ubuntu mais est facilement adaptable pour n’importe quelle distribution Linux. Généralement remplacez\\
+\cmdNoPrompt{apt-get install}\\
+par la commande d’installation de paquets de votre distribution.\\
+Avant toute installation mettez à jour vos dépôts avec la commande
+\cmd{sudo apt-get update}
+Python 3 est nécessaire pour la partie serveur de Vigilate, il est installé par défaut sur Ubuntu et bon nombre d’autres distributions. Si jamais ce n’est pas le cas, utilisez la commande
+\cmd{sudo apt-get install python3}
+La partie serveur de vigilate est stockée sur un serveur git, il faut donc installer git afin de pouvoir la récupérer. Pour cela utilisez la commande
+\cmd{apt-get install git}
+Afin d’installer django, il faut utiliser le gestionnaire de paquet python (pip). Pour l’installer utilisez la commande :
+\cmd{sudo easy\_install pip3}
+\\
+Pour récupérer la partie serveur de Vigilate, utilisez la commandes suivantes :
+\cmd{git clone \url{https://github.com/vigilate/backend.git}}
+Puis allez dans le dossier nouvellement créé avec la commande suivant.
+\cmd{cd backend}
+\\
+Le backend de Vigilate peut utiliser 2 différents gestionnaires de bases de données, mysql ou postgresql. Vous pouvez installer l’un des 2 ou les 2. Pour installer mysql utilisez :
+\cmd{sudo apt-get install mysql-server}
+Pour installez postgresql utlisez la commande :
+\cmd{sudo apt-get install postgresql}
+\\
+Le backend de vigilate à aussi besoin de uwsgi, pour l’installer utilisez :
+\cmd{sudo apt-get install uwsgi uwsgi-plugin-python3}
+\\
+La partie serveur de Vigilate est basée sur Django, pour installer Django et les autres modules python nécessaire utilisez la commande
+\cmd{sudo pip3 install -r requirements.txt}
+\\
+Pour le stockage des mots de passe Vigilate utilise un hash appelé Argon2, il faut l’installer avec les commandes suivantes :\\
+\cmdMulti{sudo apt-get install python3-dev binutils}
+\cmdMulti{sudo \path{./install-pyargon2.sh}}
+\\
+Maintenant, il faut créer la base de données de Vigilate, pour cela exécutez les commandes suivantes.
+\cmd{\path{./clear_db.sh}}
+\\
+A la fin du script plusieurs questions vous saurez poser par Django pour installer le super utilisateur Django, répondez-y.
+\\
+Pour configurer uwsgi, utilisez la commande suivante :
+\cmdMulti{echo H4sIAAqxglcAAzWPQW7CMBBF93OKXCD4BF5QNUJRpUqtQSxQFsYZ\textbackslash{}}\\
+\cmdNoPrompt{3BETOxrbUN8eC9rtn683758OgfIE75ic0JopBl2OZjd2w7KiRIHt\textbackslash{}}\\
+\cmdNoPrompt{JaPoVBNHv8lWPGaAk0G5kcMJhl90psVZq5JEcXSW1ZmCKvfkqet7\textbackslash{}}\\
+\cmdNoPrompt{CtSpn7igupEnthnV2borhvlV2bQCfGN6MizfbU3wQcyGfLCszbj7\textbackslash{}}\\
+\cmdNoPrompt{Oox72NcVdYiZLhXavzBbmQdpgn9q8Pm8bZ3DlBqHm+QYGpV5gqMN\textbackslash{}}\\
+\cmdNoPrompt{Gee3qpfCmfqSUP6nPABolsVqAAEAAA== | base64 -d | gzip -d |\textbackslash{}}\\
+\cmdNoPrompt{sudo tee /lib/systemd/system/uwsgi.service}
+\\
+\\
+Une fois cette commande exécutée, il faut éditer le fichier de configuration, pour cela ouvrez le fichier \cmdNoPrompt{\path{/lib/systemd/system/uwsgi.service}} avec votre éditeur de texte favori est remplacé chaque occurrence de \cmdNoPrompt{\path{/home/vigilate}} par le chemin vers le dépôt du backend que vous avez cloné précédemment.
+
+Puis activez l’exécution au démarrage du service :
+systemctl enable uwsgi
+
+Le frontend de Django est nginx, pour l’installer utilisez la commande
+\cmd{sudo apt-get install nginx}
+Pour configurer nginx il faut utilisez les commandes suivante :\\
+\noindent
+\cmdMulti{echo H4sIAN2hglcAA41STW/bMAw9z79CtwCFBAUYihbLyUiMpVjTBIuL\textbackslash{}}\\
+\cmdNoPrompt{7WaoEmNzk6XMkvPRIv+9jO2uw4AC4UEiqPfIR4rtNsQGVM3ML+VK\textbackslash{}}\\
+\cmdNoPrompt{z14SRhag2UHDWoeHL1LKytcgd1iiVRHkk9K/wRkZPN1xkpySZMC/\textbackslash{}}\\
+\cmdNoPrompt{JB3bYojgWGe340kX05VqAsQu1saNuJ30WG0RXCxqdSievDkWAZ+B\textbackslash{}}\\
+\cmdNoPrompt{3Vwvela7DyUWpM8UEWvwbWSfx+OBar1WEb1jsgaDig3az6YsqsA+\textbackslash{}}\\
+\cmdNoPrompt{0N2h+/yn/zOFSI6+NFOP/iDVP0n6NrYqBDbMefL3DZ22rYHOlxC1\textbackslash{}}\\
+\cmdNoPrompt{dCW6g3yjNKoOQ7+DIGOKigZC4x6lWkMIYupdbLwVqbV+L5YNyXQj\textbackslash{}}\\
+\cmdNoPrompt{Nroakfq9OhL/0wW8BcTKm0DEr1nO2erxfKT5dM7ZLLvP8oyzeZbO\textbackslash{}}\\
+\cmdNoPrompt{OFuu8rvlw5qtluv8vcTF+ubd47nO7CHnP8W0DdHXfZR/A9gSDnfA\textbackslash{}}\\
+\cmdNoPrompt{H2mpRFrSdhDoO/xpgbbKiB8YK363EQtvcIMUWNMEgU+VruCtEj/f\textbackslash{}}\\
+\cmdNoPrompt{RBT5cQs8bamxBp+7f3kXPPzaKXkFGewJtwMDAAA= | base64 -d | gzip -d |\textbackslash{}}\\
+\cmdNoPrompt{sudo tee /etc/nginx/conf.d/vigilate.conf}
+\\
+\\
+Une fois cette commande exécutée, il faut éditer le fichier de configuration, pour cela ouvrez le fichier
+\cmdNoPrompt{\path{/etc/nginx/conf.d/vigilate.conf}} avec votre éditeur de texte favori est remplacé chaque occurrence de \cmdNoPrompt{\path{/home/vigilate}} par le chemin vers le dépôt du backend que vous avez cloné précédemment.
+\\
+Maintenant, il faut initialiser les bases de données de vulnérabilités et de version de programmes. Cette opération peut prendre près d’une heure pour cela utilisez les commandes suivantes :\\
+\cmdMulti{wget \url{http://127.0.0.1/update_cpe}}\\
+\cmdMulti{wget \url{http://127.0.0.1/update_all_cve}}
+
+\section{Scanner de programmes}
+Pour le scanner du programme, il faut avoir python 3 d'installé.\\
+Si vous êtes sous Linux utilisez la commande
+\cmd{sudo apt-get install python3}
+Pour Mac os X allez sur la page : \url{https://www.python.org/downloads/mac-osx/} et choisissez l’une des versions python 3 disponible et installez là.\\
+Pour les utilisateurs Windows allez sur la page \url{https://www.python.org/downloads/windows/} et téléchargez l’un des installeurs python 3 et installez le.
+\\
+Maintenant, il faut installer les dépendances du scanneur de programme, pour cela, il faut commencer par installer le gestionnaire de paquets de python pip. Pour Linux ouvrez un terminal et lancez la commande
+\cmd{sudo easy\_install pip3}
+Pour Mac os X et Windows pip est supposé être installé avec python, si ce n’est pas le cas suivez les instructions sur cette page : \url{https://pip.pypa.io/en/stable/installing/}
+Pour installer les dépendances sous Linux ou Mac os X utilisez la commande :
+\cmd{sudo pip3 install requests}
+Pour windows ouvrez un terminal et utilisez les commandes suivantes :\\
+Pour windows 7 :
+\cmd{cd \path{AppData\Local\Programs\Python\Python35}}
+Pour Windows 10 :
+\cmd{cd \path{AppData\Local\Programs\Python\Python35-32}}
+Ensuite, la commande est la même pour les 2 versions de Windows :
+\cmd{python.exe \path{Scripts\pip.exe} install requests}
+\\
+Maintenant, il faut récupérer le scanneur de programmes il y à 2 solutions, en utilisant git (voir l’installation de la partie serveur pour installer git) via la commande (pour Linux ou Mac os)
+\cmd{git clone \url{https://github.com/vigilate/program_scanner.git}}
+Pour Windows cloner le dépôt \url{https://github.com/vigilate/program_scanner.git}
+Pour une installation plus simple, vous pouvez télécharger une version zippé du scanneur de programme avec ce lien : \url{https://github.com/vigilate/program_scanner/archive/master.zip}.\\Dézippez le et utilisez la commande suivante pour exécuter le scanner de programme : Windows 7 : \cmd{\path{AppData\Local\Programs\Python\Python35\python.exe} \path{chemin\scanner.py}}
+Windows 10 : \cmd{\path{AppData\Local\Programs\Python\Python35-32\python.exe} \path{scanner.py}}
+Linux : \cmd{python3 \path{chemin/vers/le/dossier/du/scanner/scanner.py}}
+Mac os X : \cmd{python3 \path{chemin/vers/le/dossier/du/scanner/scanner.py}}
+
+\section{Frontend}
+Le frontend angular2 est du code statique qui est hébergé sur les serveur web de github (github pages). Il n’y a donc rien à installer concernant l’environnement de production. Il suffit juste de copier la version compilée (cf 3.3 environnement de développement) des fichiers javascript vers le dépôt git \url{https://github.com/vigilate/vigilate.github.io} et il sera automatiquement disponible à l'adresse \url{https://vigilate.github.io}

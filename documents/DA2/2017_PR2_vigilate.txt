@@ -1,0 +1,28 @@
+##
+## Serveur backend / vm
+##
+
+Prérequis matériels :
+    - Nombre de CPU: 4
+    - Fréquence de CPU: 2.5Ghz
+    - RAM: 2Go
+    - Taille disque dure disponible: 10Go
+
+Prérequis logiciels :
+    - VMware ou VirtualBox
+
+
+
+##
+## Poste client
+##
+
+Prérequis matériels :
+    - Nombre de CPU: 2
+    - Fréquence de CPU: 1Ghz
+    - RAM: 2Go
+    - Taille Disque dure disponible: 1Go
+
+Prérequis logiciels :
+    - OS: Linux, Windows, Mac
+    - Navigateur web
