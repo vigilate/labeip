@@ -1,0 +1,20 @@
+\section{Backend}
+Le backend de Vigilate est codé entièrement en python, le seul outil nécessaire pour le développer est donc un éditeur de texte. Ce qui veut dire que l’installation de l’environnement de développement est identique à celle de l’environnement de production.
+\section{Scanner de programmes}
+Le scanner de programmes est lui aussi codé en python, un éditeur de texte est donc suffisant pour son développement. Cependant afin de pouvoir le tester et le développer sur tous les systèmes d’exploitation compatible, avoir des machines fonctionnant sous les différent système est une bonne pratique. Ces machines peuvent être des machines virtuel. Les OS compatibles sont Mac os, Windows, Linux basé sur le gestionnaire de paquets pacman, Linux basé sur le gestionnaire de paquets sur apt-get, Linux basé sur le gestionnaire de paquets sur rpm et BSD (qui utilise pkg comme gestionnaire de paquets).
+\section{Frontend}
+Commencez par installer git (cf 2.1 Partie Serveur), puis faites les commandes suivantes pour installer node:
+\cmd{curl -sL \url{https://deb.nodesource.com/setup_6.x} | sudo -E bash -}
+\cmdMulti{sudo apt-get install -y nodejs}\\
+Une fois fais, vous pouvez installer angular-cli :
+\cmd{sudo npm install -g angular-cli}
+Clonez le dépo frontend sur votre machine :
+\cmd{git clone \url{https://github.com/vigilate/frontend}}
+Installez les dépendances :
+\cmd{cd frontend}
+\cmdMulti{npm install}\\
+Vous êtes maintenant prêt pour développer.
+Pour compiler le projet, vous pouvez utiliser la commande suivante :
+\cmd{ng build}
+Pour servir les fichiers, vous pouvez aussi lancer
+\cmd{ng serve}
